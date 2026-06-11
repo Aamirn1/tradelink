@@ -50,5 +50,12 @@ test
 prompt
 
 server.log
+
 # Skills directory
-/skills/
+skills/
+
+# Tool results
+tool-results/
+
+# Worklog
+worklog.md

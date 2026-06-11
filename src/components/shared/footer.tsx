@@ -2,6 +2,7 @@
 
 import { useAppStore } from '@/store/app-store';
 import { Separator } from '@/components/ui/separator';
+import { TrendingUp } from 'lucide-react';
 
 export function Footer() {
   const { setCurrentView, isAuthenticated } = useAppStore();
@@ -12,10 +13,8 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg gradient-cyan-purple-strong flex items-center justify-center font-bold text-white text-xs">
-                TL
-              </div>
+            <div className="flex items-center gap-1.5">
+              <TrendingUp className="h-7 w-7 text-neon-cyan" strokeWidth={2.5} />
               <span className="text-lg font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
                 Trade Link
               </span>

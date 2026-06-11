@@ -17,6 +17,7 @@ import {
   LogOut,
   Bell,
   Shield,
+  TrendingUp,
 } from 'lucide-react';
 
 export function Header() {
@@ -67,14 +68,9 @@ export function Header() {
           {currentView === 'landing' || currentView === 'dashboard' ? (
             <button
               onClick={() => setCurrentView(isAuthenticated ? 'dashboard' : 'landing')}
-              className="flex items-center gap-2 group"
+              className="flex items-center gap-1.5 group"
             >
-              <div className="relative">
-                <div className="h-8 w-8 rounded-lg gradient-cyan-purple-strong flex items-center justify-center font-bold text-white text-xs">
-                  TL
-                </div>
-                <div className="absolute inset-0 rounded-lg gradient-cyan-purple-strong opacity-0 group-hover:opacity-50 blur-md transition-opacity" />
-              </div>
+              <TrendingUp className="h-7 w-7 text-neon-cyan group-hover:drop-shadow-[0_0_8px_rgba(0,255,242,0.6)] transition-all duration-300" strokeWidth={2.5} />
               <span className="text-lg font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
                 Trade Link
               </span>
