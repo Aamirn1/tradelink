@@ -271,7 +271,7 @@ export function AuthModal() {
   return (
     <Dialog open={showAuthModal} onOpenChange={handleClose}>
       <DialogContent
-        className="glass max-h-[90vh] overflow-y-auto custom-scrollbar sm:max-w-md md:max-w-lg border-neon-cyan/20"
+        className="bg-[#0d0d24]/95 backdrop-blur-xl max-h-[90vh] overflow-y-auto custom-scrollbar sm:max-w-md md:max-w-lg border-neon-cyan/20 shadow-2xl shadow-neon-cyan/5"
         showCloseButton
       >
         <DialogHeader className="space-y-1">
@@ -314,7 +314,7 @@ export function AuthModal() {
                   placeholder="amir03115794492@gmail.com"
                   value={adminEmail}
                   onChange={(e) => setAdminEmail(e.target.value)}
-                  className="bg-surface border-border/50 focus:border-neon-cyan focus:ring-neon-cyan/20 pr-10"
+                  className="bg-[#0a0a20] border-border/60 focus:border-neon-cyan focus:ring-neon-cyan/20 pr-10"
                 />
                 <Shield className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-neon-purple/50" />
               </div>
@@ -331,7 +331,7 @@ export function AuthModal() {
                   placeholder="Enter admin password"
                   value={adminPassword}
                   onChange={(e) => setAdminPassword(e.target.value)}
-                  className="bg-surface border-border/50 focus:border-neon-cyan focus:ring-neon-cyan/20 pr-10"
+                  className="bg-[#0a0a20] border-border/60 focus:border-neon-cyan focus:ring-neon-cyan/20 pr-10"
                 />
                 <button
                   type="button"
@@ -379,7 +379,7 @@ export function AuthModal() {
             onValueChange={(val) => setAuthModalTab(val as 'login' | 'register')}
             className="w-full"
           >
-            <TabsList className="w-full bg-surface border border-border/50 rounded-lg h-11 p-1">
+            <TabsList className="w-full bg-[#0a0a20] border border-border/60 rounded-lg h-11 p-1">
               <TabsTrigger
                 value="login"
                 className="flex-1 rounded-md data-[state=active]:gradient-cyan-purple-strong data-[state=active]:text-white data-[state=active]:shadow-lg font-medium transition-all"
@@ -413,7 +413,7 @@ export function AuthModal() {
                     placeholder="you@company.com"
                     value={loginEmail}
                     onChange={(e) => setLoginEmail(e.target.value)}
-                    className="bg-surface border-border/50 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11"
+                    className="bg-[#0a0a20] border-border/60 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11"
                   />
                 </div>
 
@@ -436,7 +436,7 @@ export function AuthModal() {
                       placeholder="Enter your password"
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
-                      className="bg-surface border-border/50 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11 pr-10"
+                      className="bg-[#0a0a20] border-border/60 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11 pr-10"
                     />
                     <button
                       type="button"
@@ -470,7 +470,7 @@ export function AuthModal() {
                 {/* Separator with "or" */}
                 <div className="relative my-4">
                   <Separator className="bg-border/50" />
-                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[rgba(18,18,40,0.6)] px-3 text-xs text-muted-foreground">
+                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0d0d24]/95 px-3 text-xs text-muted-foreground">
                     or
                   </span>
                 </div>
@@ -510,7 +510,7 @@ export function AuthModal() {
                     placeholder="John Doe"
                     value={regName}
                     onChange={(e) => setRegName(e.target.value)}
-                    className="bg-surface border-border/50 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11"
+                    className="bg-[#0a0a20] border-border/60 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11"
                   />
                 </div>
 
@@ -525,7 +525,7 @@ export function AuthModal() {
                     placeholder="you@company.com"
                     value={regEmail}
                     onChange={(e) => setRegEmail(e.target.value)}
-                    className="bg-surface border-border/50 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11"
+                    className="bg-[#0a0a20] border-border/60 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11"
                   />
                 </div>
 
@@ -540,7 +540,7 @@ export function AuthModal() {
                     placeholder="+92 300 1234567"
                     value={regPhone}
                     onChange={(e) => setRegPhone(e.target.value)}
-                    className="bg-surface border-border/50 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11"
+                    className="bg-[#0a0a20] border-border/60 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11"
                   />
                 </div>
 
@@ -557,7 +557,7 @@ export function AuthModal() {
                         placeholder="Min. 6 characters"
                         value={regPassword}
                         onChange={(e) => setRegPassword(e.target.value)}
-                        className="bg-surface border-border/50 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11 pr-10"
+                        className="bg-[#0a0a20] border-border/60 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11 pr-10"
                       />
                       <button
                         type="button"
@@ -583,7 +583,7 @@ export function AuthModal() {
                         placeholder="Re-enter password"
                         value={regConfirmPassword}
                         onChange={(e) => setRegConfirmPassword(e.target.value)}
-                        className="bg-surface border-border/50 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11 pr-10"
+                        className="bg-[#0a0a20] border-border/60 focus:border-neon-cyan focus:ring-neon-cyan/20 h-11 pr-10"
                       />
                       <button
                         type="button"
@@ -613,7 +613,7 @@ export function AuthModal() {
                       className={`relative flex items-start gap-3 rounded-lg border p-4 cursor-pointer transition-all duration-200 ${
                         regRole === 'WHOLESALER'
                           ? 'border-neon-cyan/50 neon-glow-cyan bg-neon-cyan/5'
-                          : 'border-border/50 bg-surface hover:border-neon-cyan/20'
+                          : 'border-border/60 bg-[#0a0a20] hover:border-neon-cyan/20'
                       }`}
                     >
                       <RadioGroupItem
@@ -646,7 +646,7 @@ export function AuthModal() {
                       className={`relative flex items-start gap-3 rounded-lg border p-4 cursor-pointer transition-all duration-200 ${
                         regRole === 'RETAILER'
                           ? 'border-neon-purple/50 neon-glow-purple bg-neon-purple/5'
-                          : 'border-border/50 bg-surface hover:border-neon-purple/20'
+                          : 'border-border/60 bg-[#0a0a20] hover:border-neon-purple/20'
                       }`}
                     >
                       <RadioGroupItem
@@ -687,7 +687,7 @@ export function AuthModal() {
                     placeholder="Your Company Name"
                     value={regBusinessName}
                     onChange={(e) => setRegBusinessName(e.target.value)}
-                    className="bg-surface border-border/50 focus:border-neon-purple focus:ring-neon-purple/20 h-11"
+                    className="bg-[#0a0a20] border-border/60 focus:border-neon-purple focus:ring-neon-purple/20 h-11"
                   />
                 </div>
 
@@ -703,7 +703,7 @@ export function AuthModal() {
                       placeholder="e.g. Electronics, Textiles"
                       value={regBusinessType}
                       onChange={(e) => setRegBusinessType(e.target.value)}
-                      className="bg-surface border-border/50 focus:border-neon-purple focus:ring-neon-purple/20 h-11"
+                      className="bg-[#0a0a20] border-border/60 focus:border-neon-purple focus:ring-neon-purple/20 h-11"
                     />
                   </div>
                   <div className="space-y-2">
@@ -716,7 +716,7 @@ export function AuthModal() {
                       placeholder="e.g. Lahore, Karachi"
                       value={regCity}
                       onChange={(e) => setRegCity(e.target.value)}
-                      className="bg-surface border-border/50 focus:border-neon-purple focus:ring-neon-purple/20 h-11"
+                      className="bg-[#0a0a20] border-border/60 focus:border-neon-purple focus:ring-neon-purple/20 h-11"
                     />
                   </div>
                 </div>

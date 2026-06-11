@@ -76,7 +76,7 @@ export function BottomNav() {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 glass border-t border-border/50 safe-area-bottom">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#0d0d24]/95 backdrop-blur-xl border-t border-border/50 safe-area-bottom">
       {/* Active indicator bar */}
       <div className="relative">
         <div
@@ -104,15 +104,16 @@ export function BottomNav() {
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
-              {/* Active glow background */}
-              {isActive && (
-                <div className="absolute inset-0 rounded-xl bg-neon-cyan/5" />
-              )}
-
-              <div className="relative">
+              {/* Icon container with background */}
+              <div className={cn(
+                'relative flex items-center justify-center h-9 w-9 rounded-xl transition-all duration-200',
+                isActive
+                  ? 'bg-neon-cyan/20 shadow-[0_0_16px_rgba(0,255,242,0.25)]'
+                  : 'bg-white/10 hover:bg-white/15'
+              )}>
                 <Icon
                   className={cn(
-                    'h-5 w-5 transition-all duration-200',
+                    'h-4.5 w-4.5 transition-all duration-200',
                     isActive && 'drop-shadow-[0_0_6px_rgba(0,255,242,0.5)]'
                   )}
                   strokeWidth={isActive ? 2.5 : 2}
