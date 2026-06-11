@@ -18,6 +18,10 @@ import {
   Camera,
   Tag,
   Briefcase,
+  Bot,
+  MessageSquare,
+  Sparkles,
+  ArrowRight,
 } from 'lucide-react';
 import { useAppStore } from '@/store/app-store';
 import { cn } from '@/lib/utils';
@@ -287,6 +291,56 @@ export function ProfileView() {
               </Button>
             </div>
           </CardContent>
+        </Card>
+      </motion.div>
+
+      {/* ── AI Chat Assistant ──────────────────────────────── */}
+      <motion.div variants={item}>
+        <Card className="glass border-0 overflow-hidden">
+          <div className="gradient-cyan-purple p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="flex items-center gap-3 flex-1">
+              <div className="h-12 w-12 rounded-xl gradient-cyan-purple-strong flex items-center justify-center shrink-0 neon-glow-cyan">
+                <Bot className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <div>
+                <h2 className="text-lg font-bold text-primary-foreground flex items-center gap-2">
+                  AI Chat Assistant
+                  <Sparkles className="h-4 w-4 text-neon-cyan" />
+                </h2>
+                <p className="text-sm text-primary-foreground/70 mt-0.5">
+                  Get instant help with escrow, RFQs, pricing, and more. Powered by AI.
+                </p>
+              </div>
+            </div>
+            <Button
+              onClick={() => useAppStore.getState().setAiChatOpen(true)}
+              className="bg-white/20 hover:bg-white/30 text-primary-foreground border border-white/20 font-semibold shrink-0 backdrop-blur-sm"
+            >
+              <MessageSquare className="h-4 w-4 mr-2" /> Chat Now
+              <ArrowRight className="h-4 w-4 ml-1" />
+            </Button>
+          </div>
+          {/* Quick topics */}
+          <div className="px-5 py-4 space-y-3">
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Quick Topics</p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { label: 'How escrow works', icon: Shield },
+                { label: 'Post an RFQ', icon: MessageSquare },
+                { label: 'Pricing & fees', icon: Tag },
+                { label: 'Order help', icon: Briefcase },
+              ].map((topic) => (
+                <button
+                  key={topic.label}
+                  onClick={() => useAppStore.getState().setAiChatOpen(true)}
+                  className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border border-neon-cyan/20 bg-neon-cyan/5 text-neon-cyan hover:bg-neon-cyan/15 hover:border-neon-cyan/40 transition-all duration-200 cursor-pointer"
+                >
+                  <topic.icon className="h-3 w-3" />
+                  {topic.label}
+                </button>
+              ))}
+            </div>
+          </div>
         </Card>
       </motion.div>
 

@@ -537,21 +537,6 @@ export function LandingPage() {
         </AnimatedSection>
 
         <div className="relative max-w-4xl mx-auto">
-          {/* Connecting gradient line between steps */}
-          <div className="hidden md:block absolute top-24 left-[16.67%] right-[16.67%] h-0.5">
-            <div className="w-full h-full bg-gradient-to-r from-neon-cyan/40 via-neon-purple/40 to-neon-cyan/40" />
-            <motion.div
-              className="absolute top-1/2 -translate-y-1/2 w-16 h-1 rounded-full gradient-cyan-purple-strong"
-              animate={{ left: ['0%', '100%'] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </div>
-
-          {/* Mobile vertical connecting line */}
-          <div className="md:hidden absolute left-1/2 top-0 bottom-0 w-0.5">
-            <div className="w-full h-full bg-gradient-to-b from-neon-cyan/40 via-neon-purple/40 to-neon-cyan/40" />
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             {steps.map((step, i) => (
               <AnimatedSection key={step.num} index={i}>

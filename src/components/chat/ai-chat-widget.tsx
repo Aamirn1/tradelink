@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Loader2, Bot, User } from 'lucide-react';
+import { X, Send, Loader2, Bot, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -37,7 +37,6 @@ function generateId(): string {
 // ── Component ──────────────────────────────────────────────────
 
 export function AIChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +46,7 @@ export function AIChatWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { user, isAuthenticated } = useAppStore();
+  const { user, isAuthenticated, aiChatOpen, setAiChatOpen } = useAppStore();
 
   // Generate sessionId on mount
   useEffect(() => {
@@ -56,7 +55,7 @@ export function AIChatWidget() {
 
   // Add welcome message when chat opens for the first time
   useEffect(() => {
-    if (isOpen && messages.length === 0) {
+    if (aiChatOpen && messages.length === 0) {
       const welcomeMsg: ChatMessage = {
         id: 'welcome',
         role: 'assistant',
@@ -65,7 +64,7 @@ export function AIChatWidget() {
       };
       setMessages([welcomeMsg]);
     }
-  }, [isOpen, messages.length]);
+  }, [aiChatOpen, messages.length]);
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -74,10 +73,10 @@ export function AIChatWidget() {
 
   // Focus input when chat opens
   useEffect(() => {
-    if (isOpen) {
+    if (aiChatOpen) {
       setTimeout(() => inputRef.current?.focus(), 300);
     }
-  }, [isOpen]);
+  }, [aiChatOpen]);
 
   // ── Send message to API ────────────────────────────────────
   const sendMessage = useCallback(
@@ -216,28 +215,9 @@ export function AIChatWidget() {
 
   return (
     <>
-      {/* ── Floating Toggle Button ─────────────────────────── */}
-      <AnimatePresence>
-        {!isOpen && (
-          <motion.button
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-            onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full gradient-cyan-purple-strong flex items-center justify-center shadow-lg neon-glow-cyan cursor-pointer group"
-            aria-label="Open AI Chat Assistant"
-          >
-            <MessageSquare className="h-6 w-6 text-primary-foreground group-hover:scale-110 transition-transform" />
-            {/* Pulsing ring */}
-            <span className="absolute inset-0 rounded-full gradient-cyan-purple-strong opacity-40 animate-ping" />
-          </motion.button>
-        )}
-      </AnimatePresence>
-
       {/* ── Chat Panel ─────────────────────────────────────── */}
       <AnimatePresence>
-        {isOpen && (
+        {aiChatOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -247,7 +227,7 @@ export function AIChatWidget() {
               'fixed z-50 glass rounded-2xl overflow-hidden flex flex-col',
               'shadow-2xl shadow-neon-cyan/10',
               // Desktop: fixed panel
-              'bottom-6 right-6 w-[380px] max-h-[520px]',
+              'bottom-4 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-6 w-auto sm:w-[380px] max-h-[520px]',
               // Mobile: full width at bottom
               'max-sm:bottom-0 max-sm:right-0 max-sm:left-0 max-sm:w-full max-sm:max-h-[70vh] max-sm:rounded-b-none max-sm:rounded-t-2xl'
             )}
@@ -271,7 +251,7 @@ export function AIChatWidget() {
                 variant="ghost"
                 size="icon"
                 className="h-8 w-8 text-muted-foreground hover:text-foreground hover:bg-surface-hover"
-                onClick={() => setIsOpen(false)}
+                onClick={() => setAiChatOpen(false)}
                 aria-label="Close chat"
               >
                 <X className="h-4 w-4" />

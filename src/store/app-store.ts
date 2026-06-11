@@ -34,6 +34,10 @@ interface AppState {
   // Mobile nav
   mobileNavOpen: boolean;
   setMobileNavOpen: (open: boolean) => void;
+
+  // AI Chat
+  aiChatOpen: boolean;
+  setAiChatOpen: (open: boolean) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -78,6 +82,10 @@ export const useAppStore = create<AppState>()(
       // Mobile nav
       mobileNavOpen: false,
       setMobileNavOpen: (open) => set({ mobileNavOpen: open }),
+
+      // AI Chat
+      aiChatOpen: false,
+      setAiChatOpen: (open) => set({ aiChatOpen: open }),
     }),
     {
       name: 'tradelink-store',
