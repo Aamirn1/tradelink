@@ -14,8 +14,8 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-3">
             <div className="flex items-center gap-1.5">
-              <TrendingUp className="h-7 w-7 text-neon-cyan" strokeWidth={2.5} />
-              <span className="text-lg font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
+              <TrendingUp className="h-5 w-5 text-neon-cyan" strokeWidth={2.5} />
+              <span className="text-sm font-bold whitespace-nowrap bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
                 Bulk Stock Trade
               </span>
             </div>
