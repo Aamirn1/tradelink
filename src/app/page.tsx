@@ -2,7 +2,7 @@
 
 import { useAppStore } from '@/store/app-store';
 import { Header } from '@/components/shared/header';
-import { Footer } from '@/components/shared/footer';
+import { BottomNav } from '@/components/shared/bottom-nav';
 import { AuthModal } from '@/components/auth/auth-modal';
 import { LandingPage } from '@/components/landing/landing-page';
 import { WholesalerDashboard } from '@/components/dashboard/wholesaler-dashboard';
@@ -29,6 +29,8 @@ function ViewRouter() {
         return <MarketplaceView />;
       case 'rfq-board':
         return <RfqBoardView />;
+      case 'profile':
+        return <LandingPage />;
       case 'landing':
       default:
         return <LandingPage />;
@@ -81,10 +83,10 @@ function ViewRouter() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-background relative">
       <Header />
       <AuthModal />
-      <main className="flex-1">
+      <main className="flex-1 pb-20">
         <AnimatePresence mode="wait">
           <motion.div
             key={useAppStore.getState().currentView}
@@ -97,7 +99,7 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
       </main>
-      <Footer />
+      <BottomNav />
       <AIChatWidget />
     </div>
   );
