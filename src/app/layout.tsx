@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Trade Link - B2B Wholesale Marketplace | Secure Escrow Trading",
-    template: "%s | Trade Link",
+    default: "Bulk Stock Trade - B2B Wholesale Marketplace | Secure Escrow Trading",
+    template: "%s | Bulk Stock Trade",
   },
   description:
-    "Trade Link is the premier B2B wholesale marketplace connecting suppliers and retailers. Browse products, post RFQs, and trade securely with escrow payments. Low 3% commission.",
+    "Bulk Stock Trade is the premier B2B wholesale marketplace connecting suppliers and retailers. Browse products, post RFQs, and trade securely with escrow payments. Low 3% commission.",
   keywords: [
     "wholesale marketplace",
     "B2B trading platform",
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
     "bulk clothing supplier",
     "food wholesale distributor",
   ],
-  authors: [{ name: "Trade Link" }],
-  creator: "Trade Link",
-  publisher: "Trade Link",
-  metadataBase: new URL("https://tradelink.com"),
+  authors: [{ name: "Bulk Stock Trade" }],
+  creator: "Bulk Stock Trade",
+  publisher: "Bulk Stock Trade",
+  metadataBase: new URL("https://bulkstocktrade.com"),
   alternates: {
     canonical: "/",
   },
@@ -53,24 +53,24 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "Trade Link - B2B Wholesale Marketplace",
+    title: "Bulk Stock Trade - B2B Wholesale Marketplace",
     description:
       "Connect with verified wholesalers and retailers. Trade securely with escrow payments. Post RFQs and get competitive quotes.",
     type: "website",
     locale: "en_US",
-    siteName: "Trade Link",
+    siteName: "Bulk Stock Trade",
     images: [
       {
         url: "/hero-bg.png",
         width: 1344,
         height: 768,
-        alt: "Trade Link - B2B Wholesale Marketplace",
+        alt: "Bulk Stock Trade - B2B Wholesale Marketplace",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trade Link - B2B Wholesale Marketplace",
+    title: "Bulk Stock Trade - B2B Wholesale Marketplace",
     description:
       "Connect with verified wholesalers and retailers. Trade securely with escrow payments.",
     images: ["/hero-bg.png"],
@@ -97,12 +97,12 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Marketplace",
-    name: "Trade Link",
+    name: "Bulk Stock Trade",
     description:
       "B2B wholesale marketplace connecting wholesalers and retailers with secure escrow payments",
-    url: "https://tradelink.com",
-    logo: "https://tradelink.com/logo.png",
-    image: "https://tradelink.com/hero-bg.png",
+    url: "https://bulkstocktrade.com",
+    logo: "https://bulkstocktrade.com/logo.png",
+    image: "https://bulkstocktrade.com/hero-bg.png",
     priceRange: "$$",
     currenciesAccepted: "USD",
     paymentAccepted: "Escrow, Credit Card, Bank Transfer",

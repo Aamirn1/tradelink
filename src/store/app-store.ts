@@ -88,7 +88,7 @@ export const useAppStore = create<AppState>()(
       setAiChatOpen: (open) => set({ aiChatOpen: open }),
     }),
     {
-      name: 'tradelink-store',
+      name: 'bulkstocktrade-store',
       partialize: (state) => ({
         user: state.user,
         isAuthenticated: state.isAuthenticated,

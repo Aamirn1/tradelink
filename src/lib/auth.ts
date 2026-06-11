@@ -41,7 +41,7 @@ export async function ensureAdminExists() {
         name: 'Admin',
         password: hashPassword('admin123'),
         role: 'ADMIN',
-        businessName: 'Trade Link Platform',
+        businessName: 'Bulk Stock Trade Platform',
         isVerified: true,
       },
     });

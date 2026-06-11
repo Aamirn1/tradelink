@@ -59,7 +59,7 @@ export function AIChatWidget() {
       const welcomeMsg: ChatMessage = {
         id: 'welcome',
         role: 'assistant',
-        content: "Hi! 👋 I'm your Trade Link assistant. How can I help you today?",
+        content: "Hi! 👋 I'm your Bulk Stock Trade assistant. How can I help you today?",
         timestamp: new Date(),
       };
       setMessages([welcomeMsg]);
@@ -240,7 +240,7 @@ export function AIChatWidget() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold gradient-cyan-purple bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan to-neon-purple">
-                    Trade Link Assistant
+                    Bulk Stock Trade Assistant
                   </h3>
                   <p className="text-[10px] text-muted-foreground">
                     AI-powered support

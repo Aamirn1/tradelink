@@ -48,9 +48,9 @@ function sanitizeInput(input: string): string {
 }
 
 // ── System prompt ─────────────────────────────────────────────
-const SYSTEM_PROMPT = `You are the Trade Link AI Assistant, a helpful support bot for the B2B wholesale marketplace platform Trade Link. 
+const SYSTEM_PROMPT = `You are the Bulk Stock Trade AI Assistant, a helpful support bot for the B2B wholesale marketplace platform Bulk Stock Trade. 
 
-Key information about Trade Link:
+Key information about Bulk Stock Trade:
 - It's a B2B marketplace connecting wholesalers and retailers
 - Wholesalers list products with pricing tiers and MOQ (minimum order quantity)
 - Retailers post RFQs (Request for Quotes) to find suppliers

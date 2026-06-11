@@ -72,7 +72,7 @@ export function Header() {
             >
               <TrendingUp className="h-7 w-7 text-neon-cyan group-hover:drop-shadow-[0_0_8px_rgba(0,255,242,0.6)] transition-all duration-300" strokeWidth={2.5} />
               <span className="text-lg font-bold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Trade Link
+                Bulk Stock Trade
               </span>
             </button>
           ) : (

@@ -427,7 +427,7 @@ export function LandingPage() {
       icon: CheckCircle,
       title: 'Verified Suppliers',
       description:
-        'Every wholesaler on Trade Link goes through verification. Quality profiles you can trust for reliable partnerships.',
+        'Every wholesaler on Bulk Stock Trade goes through verification. Quality profiles you can trust for reliable partnerships.',
       glow: 'neon-glow-purple',
       border: 'neon-border-purple',
       iconColor: 'text-neon-purple',
@@ -441,7 +441,7 @@ export function LandingPage() {
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection className="text-center mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium glass neon-border-purple text-neon-purple mb-4">
-            <Zap className="h-3.5 w-3.5" /> Why Trade Link
+            <Zap className="h-3.5 w-3.5" /> Why Bulk Stock Trade
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             Built for{' '}
@@ -666,7 +666,7 @@ export function LandingPage() {
               </h2>
               <p className="text-muted-foreground max-w-lg mx-auto text-lg mb-8">
                 Join thousands of wholesalers and retailers already trading
-                securely on Trade Link.
+                securely on Bulk Stock Trade.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
