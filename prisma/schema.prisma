@@ -1,0 +1,211 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String    @id @default(cuid())
+  email           String    @unique
+  phone           String?
+  password        String
+  name            String
+  role            String    @default("RETAILER") // WHOLESALER, RETAILER, ADMIN
+  businessName    String?
+  businessType    String?
+  category        String?
+  city            String?
+  address         String?
+  avatar          String?
+  isVerified      Boolean   @default(false)
+  isSuspended     Boolean   @default(false)
+  suspensionCount Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  products        Product[]
+  rfqs            RFQ[]
+  quotes          Quote[]
+  ordersAsBuyer   Order[]   @relation("BuyerOrders")
+  ordersAsSeller  Order[]   @relation("SellerOrders")
+  sentMessages    Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+  payments        Payment[]
+  notifications   Notification[]
+  chatParticipants ChatParticipant[]
+}
+
+model Product {
+  id            String    @id @default(cuid())
+  name          String
+  description   String
+  category      String
+  price         Float
+  priceTiers    String    @default("{}") // JSON string for tier pricing
+  moq           Int       @default(1)
+  stock         Int       @default(0)
+  images        String    @default("[]") // JSON array of image URLs
+  isActive      Boolean   @default(true)
+  wholesalerId  String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  wholesaler    User      @relation(fields: [wholesalerId], references: [id])
+  orderItems    OrderItem[]
+}
+
+model RFQ {
+  id            String    @id @default(cuid())
+  title         String
+  description   String
+  category      String
+  quantity      Int
+  unit          String    @default("pieces")
+  deadline      DateTime?
+  budget        Float?
+  status        String    @default("OPEN") // OPEN, QUOTED, CLOSED, CANCELLED
+  retailerId    String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  retailer      User      @relation(fields: [retailerId], references: [id])
+  quotes        Quote[]
+}
+
+model Quote {
+  id            String    @id @default(cuid())
+  price         Float
+  quantity      Int
+  description   String
+  deliveryTime  String
+  status        String    @default("PENDING") // PENDING, ACCEPTED, REJECTED
+  rfqId         String
+  wholesalerId  String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  rfq           RFQ       @relation(fields: [rfqId], references: [id], onDelete: Cascade)
+  wholesaler    User      @relation(fields: [wholesalerId], references: [id])
+}
+
+model Order {
+  id               String    @id @default(cuid())
+  orderNumber      String    @unique
+  status           String    @default("PENDING") // PENDING, PROCESSING, SHIPPED, DELIVERED, DISPUTED, CANCELLED, COMPLETED
+  totalAmount      Float
+  depositAmount    Float     @default(0)
+  depositPercent   Float     @default(100)
+  lockedAmount     Float     @default(0)
+  releasedAmount   Float     @default(0)
+  commissionRate   Float     @default(0.03)
+  commissionAmount Float     @default(0)
+  paymentType      String    @default("FULL") // FULL, PARTIAL
+  notes            String?
+  buyerId          String
+  sellerId         String
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  buyer            User      @relation("BuyerOrders", fields: [buyerId], references: [id])
+  seller           User      @relation("SellerOrders", fields: [sellerId], references: [id])
+  items            OrderItem[]
+  payments         Payment[]
+}
+
+model OrderItem {
+  id            String    @id @default(cuid())
+  productId     String
+  productName   String
+  quantity      Int
+  unitPrice     Float
+  totalPrice    Float
+  orderId       String
+
+  order         Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product       Product   @relation(fields: [productId], references: [id])
+}
+
+model Payment {
+  id              String    @id @default(cuid())
+  amount          Float
+  type            String    // DEPOSIT, REMAINDER, REFUND, COMMISSION
+  status          String    @default("PENDING") // PENDING, COMPLETED, FAILED
+  method          String    @default("ESCROW") // ESCROW, CARD, BANK_TRANSFER
+  transactionRef  String?
+  userId          String
+  orderId         String
+  createdAt       DateTime  @default(now())
+
+  user            User      @relation(fields: [userId], references: [id])
+  order           Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model ChatRoom {
+  id            String    @id @default(cuid())
+  orderId       String?
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  participants  ChatParticipant[]
+  messages      Message[]
+}
+
+model ChatParticipant {
+  id          String    @id @default(cuid())
+  userId      String
+  chatRoomId  String
+  lastReadAt  DateTime?
+
+  user        User      @relation(fields: [userId], references: [id])
+  chatRoom    ChatRoom  @relation(fields: [chatRoomId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, chatRoomId])
+}
+
+model Message {
+  id          String    @id @default(cuid())
+  content     String
+  isRead      Boolean   @default(false)
+  isFlagged   Boolean   @default(false)
+  flagReason  String?
+  chatRoomId  String
+  senderId    String
+  receiverId  String
+  createdAt   DateTime  @default(now())
+
+  chatRoom    ChatRoom  @relation(fields: [chatRoomId], references: [id], onDelete: Cascade)
+  sender      User      @relation("SentMessages", fields: [senderId], references: [id])
+  receiver    User      @relation("ReceivedMessages", fields: [receiverId], references: [id])
+}
+
+model Notification {
+  id          String    @id @default(cuid())
+  title       String
+  message     String
+  type        String    @default("SYSTEM") // ORDER, PAYMENT, MESSAGE, SYSTEM
+  isRead      Boolean   @default(false)
+  userId      String
+  createdAt   DateTime  @default(now())
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AdminLog {
+  id          String    @id @default(cuid())
+  action      String
+  details     String?
+  adminId     String?
+  targetId    String?
+  createdAt   DateTime  @default(now())
+}
+
+model PlatformSetting {
+  id          String    @id @default(cuid())
+  key         String    @unique
+  value       String
+  updatedAt   DateTime  @updatedAt
+}
