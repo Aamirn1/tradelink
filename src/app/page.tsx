@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useAppStore } from '@/store/app-store';
 import { Header } from '@/components/shared/header';
 import { BottomNav } from '@/components/shared/bottom-nav';
@@ -17,6 +18,7 @@ import { OrderDetailView } from '@/components/dashboard/order-detail-view';
 import { ChatView } from '@/components/chat/chat-view';
 import { ProfileView } from '@/components/dashboard/profile-view';
 import { AIChatWidget } from '@/components/chat/ai-chat-widget';
+import { ScrollToTop } from '@/components/shared/scroll-to-top';
 import { AnimatePresence, motion } from 'framer-motion';
 
 function ViewRouter() {
@@ -82,6 +84,13 @@ function ViewRouter() {
 }
 
 export default function Home() {
+  const currentView = useAppStore((state) => state.currentView);
+
+  // Scroll to top whenever the view changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [currentView]);
+
   return (
     <div className="min-h-screen flex flex-col bg-background relative">
       <Header />
@@ -89,7 +98,7 @@ export default function Home() {
       <main className="flex-1 pb-20">
         <AnimatePresence mode="wait">
           <motion.div
-            key={useAppStore.getState().currentView}
+            key={currentView}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
@@ -101,6 +110,7 @@ export default function Home() {
       </main>
       <BottomNav />
       <AIChatWidget />
+      <ScrollToTop />
     </div>
   );
 }

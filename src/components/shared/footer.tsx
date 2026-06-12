@@ -1,5 +1,6 @@
 'use client';
 
+import { TrendingUp } from 'lucide-react';
 import { useAppStore } from '@/store/app-store';
 import { Separator } from '@/components/ui/separator';
 import { TrendingUp } from 'lucide-react';
