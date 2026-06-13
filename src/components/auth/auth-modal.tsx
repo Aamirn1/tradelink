@@ -283,7 +283,7 @@ export function AuthModal() {
               </span>
             ) : (
               <span className="gradient-cyan-purple-strong bg-clip-text text-transparent">
-                Bulk Stock Trade
+                B2B Market Grid
               </span>
             )}
           </DialogTitle>

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://bulkstocktrade.com';
+  const baseUrl = 'https://b2bmarketgrid.com';
 
   const categories = [
     'electronics',

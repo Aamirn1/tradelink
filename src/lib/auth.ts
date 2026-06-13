@@ -41,7 +41,7 @@ export async function ensureAdminExists() {
         name: 'Admin',
         password: hashPassword('admin123'),
         role: 'ADMIN',
-        businessName: 'Bulk Stock Trade Platform',
+        businessName: 'B2B Market Grid Platform',
         isVerified: true,
       },
     });

@@ -17,7 +17,7 @@ export function Footer() {
             <div className="flex items-center gap-1.5">
               <TrendingUp className="h-5 w-5 text-neon-cyan" strokeWidth={2.5} />
               <span className="text-sm font-bold whitespace-nowrap bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">
-                Bulk Stock Trade
+                B2B Market Grid
               </span>
             </div>
             <p className="text-sm text-muted-foreground">
@@ -105,7 +105,7 @@ export function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Bulk Stock Trade. All rights reserved.
+            © {new Date().getFullYear()} B2B Market Grid. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <span className="text-xs text-muted-foreground">

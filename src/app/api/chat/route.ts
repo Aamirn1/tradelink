@@ -48,9 +48,9 @@ function sanitizeInput(input: string): string {
 }
 
 // ── System prompt ─────────────────────────────────────────────
-const SYSTEM_PROMPT = `You are the Bulk Stock Trade AI Assistant, a helpful support bot for the B2B wholesale marketplace platform Bulk Stock Trade. 
+const SYSTEM_PROMPT = `You are the B2B Market Grid AI Assistant, a helpful support bot for the B2B wholesale marketplace platform B2B Market Grid. 
 
-Key information about Bulk Stock Trade:
+Key information about B2B Market Grid:
 - It's a B2B marketplace connecting wholesalers and retailers
 - Wholesalers list products with pricing tiers and MOQ (minimum order quantity)
 - Retailers post RFQs (Request for Quotes) to find suppliers

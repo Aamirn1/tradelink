@@ -88,7 +88,7 @@ export const useAppStore = create<AppState>()(
       setAiChatOpen: (open) => set({ aiChatOpen: open }),
     }),
     {
-      name: 'bulkstocktrade-store',
+      name: 'b2bmarketgrid-store',
       partialize: (state) => ({
         user: state.user,
         isAuthenticated: state.isAuthenticated,

@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Bulk Stock Trade - B2B Wholesale Marketplace | Secure Escrow Trading",
-    template: "%s | Bulk Stock Trade",
+    default: "B2B Market Grid - B2B Wholesale Marketplace | Secure Escrow Trading",
+    template: "%s | B2B Market Grid",
   },
   description:
-    "Bulk Stock Trade is the premier B2B wholesale marketplace connecting suppliers and retailers. Browse products, post RFQs, and trade securely with escrow payments. Low 3% commission.",
+    "B2B Market Grid is the premier B2B wholesale marketplace connecting suppliers and retailers. Browse products, post RFQs, and trade securely with escrow payments. Low 3% commission.",
   keywords: [
     "wholesale marketplace",
     "B2B trading platform",
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
     "bulk clothing supplier",
     "food wholesale distributor",
   ],
-  authors: [{ name: "Bulk Stock Trade" }],
-  creator: "Bulk Stock Trade",
-  publisher: "Bulk Stock Trade",
-  metadataBase: new URL("https://bulkstocktrade.com"),
+  authors: [{ name: "B2B Market Grid" }],
+  creator: "B2B Market Grid",
+  publisher: "B2B Market Grid",
+  metadataBase: new URL("https://b2bmarketgrid.com"),
   alternates: {
     canonical: "/",
   },
@@ -53,24 +53,24 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "Bulk Stock Trade - B2B Wholesale Marketplace",
+    title: "B2B Market Grid - B2B Wholesale Marketplace",
     description:
       "Connect with verified wholesalers and retailers. Trade securely with escrow payments. Post RFQs and get competitive quotes.",
     type: "website",
     locale: "en_US",
-    siteName: "Bulk Stock Trade",
+    siteName: "B2B Market Grid",
     images: [
       {
         url: "/hero-bg.png",
         width: 1344,
         height: 768,
-        alt: "Bulk Stock Trade - B2B Wholesale Marketplace",
+        alt: "B2B Market Grid - B2B Wholesale Marketplace",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bulk Stock Trade - B2B Wholesale Marketplace",
+    title: "B2B Market Grid - B2B Wholesale Marketplace",
     description:
       "Connect with verified wholesalers and retailers. Trade securely with escrow payments.",
     images: ["/hero-bg.png"],
@@ -97,12 +97,12 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Marketplace",
-    name: "Bulk Stock Trade",
+    name: "B2B Market Grid",
     description:
       "B2B wholesale marketplace connecting wholesalers and retailers with secure escrow payments",
-    url: "https://bulkstocktrade.com",
-    logo: "https://bulkstocktrade.com/logo.png",
-    image: "https://bulkstocktrade.com/hero-bg.png",
+    url: "https://b2bmarketgrid.com",
+    logo: "https://b2bmarketgrid.com/logo.png",
+    image: "https://b2bmarketgrid.com/hero-bg.png",
     priceRange: "$$",
     currenciesAccepted: "USD",
     paymentAccepted: "Escrow, Credit Card, Bank Transfer",
