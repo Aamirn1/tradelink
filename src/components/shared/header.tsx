@@ -12,8 +12,6 @@ import {
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import {
-  Moon,
-  Sun,
   LogOut,
   Bell,
   Shield,
@@ -27,8 +25,6 @@ export function Header() {
     currentView,
     setCurrentView,
     logout,
-    theme,
-    toggleTheme,
     setAuthModalTab,
   } = useAppStore();
 
@@ -82,16 +78,6 @@ export function Header() {
 
         {/* Right: Actions */}
         <div className="flex items-center gap-1">
-          {/* Theme toggle */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleTheme}
-            className="h-8 w-8 text-muted-foreground hover:text-foreground"
-          >
-            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </Button>
-
           {isAuthenticated && user ? (
             <>
               {/* Notifications */}

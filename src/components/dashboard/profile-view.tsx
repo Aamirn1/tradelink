@@ -22,6 +22,8 @@ import {
   MessageSquare,
   Sparkles,
   ArrowRight,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { useAppStore } from '@/store/app-store';
 import { cn } from '@/lib/utils';
@@ -64,7 +66,7 @@ const item = {
 // ── Component ──────────────────────────────────────────────
 
 export function ProfileView() {
-  const { user } = useAppStore();
+  const { user, theme, toggleTheme } = useAppStore();
 
   // Form state
   const [name, setName] = useState(user?.name ?? '');
@@ -128,6 +130,41 @@ export function ProfileView() {
               <p className="text-primary-foreground/70 text-sm mt-1">{user?.email}</p>
             </div>
           </div>
+        </Card>
+      </motion.div>
+
+      {/* ── Appearance ──────────────────────────────── */}
+      <motion.div variants={item}>
+        <Card className="glass border-0">
+          <CardHeader>
+            <CardTitle className="neon-text-cyan text-lg flex items-center gap-2">
+              <Sun className="h-5 w-5" /> Appearance
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium">Theme</p>
+                <p className="text-xs text-muted-foreground">Switch between dark and light mode</p>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={toggleTheme}
+                className="neon-border-cyan hover:neon-glow-cyan gap-2"
+              >
+                {theme === 'dark' ? (
+                  <>
+                    <Sun className="h-4 w-4" /> Light Mode
+                  </>
+                ) : (
+                  <>
+                    <Moon className="h-4 w-4" /> Dark Mode
+                  </>
+                )}
+              </Button>
+            </div>
+          </CardContent>
         </Card>
       </motion.div>
 
